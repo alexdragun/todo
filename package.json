@@ -1,0 +1,25 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "My super-duper Nuxt.js project",
+  "author": "Alex Dragun",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt build --target static && nuxt export",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "start": "nuxt start",
+    "export": "nuxt export",
+    "serve": "nuxt serve"
+  },
+  "dependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "nuxt": "2.13.2",
+    "nuxt-webfontloader": "^1.1.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
+}
