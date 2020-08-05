@@ -1,4 +1,4 @@
-const routerBase = process.env.DEPLOY_ENV === 'STATIC' ? {
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   router: {
     base: '/todo/'
   }
@@ -7,7 +7,7 @@ const routerBase = process.env.DEPLOY_ENV === 'STATIC' ? {
 export default {
   ...routerBase,
   mode: 'universal',
-  target: 'static',
+  target: 'server',
   /*
   ** Headers of the page
   */
