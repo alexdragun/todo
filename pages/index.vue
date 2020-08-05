@@ -119,16 +119,39 @@
     methods: {
       addTodo() {
         if (this.newTodo === '') {
-          alert('Fill')
+          this.$swal({
+            toast: true,
+            position: 'top-end',
+            timer: 2000,
+            icon: 'info',
+            showConfirmButton: false,
+            title: 'Your field is empty.'
+          })
         } else {
           this.todos.push({title: this.newTodo, completed: false})
           this.newTodo = ''
           this.newDesc = ''
+          this.$swal({
+            toast: true,
+            position: 'top-end',
+            timer: 2000,
+            icon: 'success',
+            showConfirmButton: false,
+            title: 'Successfully added task!'
+          })
           localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
         }
       },
       removeTodo(todo) {
         this.todos.splice(this.todos.indexOf(todo), 1)
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          timer: 2000,
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Successfully deleted task!'
+        })
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
       },
       editTodo(todo) {
@@ -143,10 +166,37 @@
         if (!todo.title) {
           this.removeTodo(todo)
         }
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          timer: 2000,
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Successfully edited task!'
+        })
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
       },
       completedTodo(todo) {
         todo.completed = !todo.completed
+        if (todo.completed) {
+          this.$swal({
+            toast: true,
+            position: 'top-end',
+            timer: 2000,
+            icon: 'success',
+            showConfirmButton: false,
+            title: 'Successfully completed task!'
+          })
+        } else {
+          this.$swal({
+            toast: true,
+            position: 'top-end',
+            timer: 2000,
+            icon: 'success',
+            showConfirmButton: false,
+            title: 'Successfully returned task!'
+          })
+        }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
       }
     }
@@ -156,8 +206,8 @@
 <style lang="scss" scoped>
 .wrapper {
   .container {
-    padding: 0 20px;
-    min-height: 100vh;
+    padding: 50px 20px;
+    min-height: calc(100vh - 100px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -201,11 +251,18 @@
               background-color: $primary_color;
               color: $primary_light;
             }
+            @media only screen and (max-width: 500px) {
+              padding: 10px 15px;
+            }
             &.selected {
               background-color: $primary_color;
               color: $primary_light;
             }
-            a {}
+            a {
+              @media only screen and (max-width: 500px) {
+                font-size: 14px;
+              }
+            }
           }
         }
       }
@@ -224,6 +281,11 @@
             border-bottom: 1px solid $secondary_color;
             &:last-child {
               border-bottom: none;
+            }
+            @media only screen and (max-width: 500px) {
+              flex-direction: column;
+              align-items: baseline;
+              justify-content: flex-start;
             }
             .container-checkbox {
               margin-right: 10px;
@@ -281,6 +343,11 @@
               }
             }
             &.editing {
+              i {
+                &:last-child {
+                  display: none;
+                }
+              }
               .container-checkbox {
                 display: none;
               }
@@ -298,6 +365,10 @@
               display: flex;
               align-items: center;
               margin-left: 20px;
+              @media only screen and (max-width: 500px) {
+                margin-top: 10px;
+                margin-left: 0;
+              }
               i {
                 cursor: pointer;
                 display: flex;

@@ -59,7 +59,8 @@ export default {
   */
   modules: [
     '@nuxtjs/style-resources',
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    'vue-sweetalert2/nuxt'
   ],
   styleResources: {
     scss: [
