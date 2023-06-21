@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
-    "nuxt": "2.13.2",
+    "nuxt": "3.4.3",
     "nuxt-webfontloader": "^1.1.0",
     "vue-sweetalert2": "^3.0.6"
   },
